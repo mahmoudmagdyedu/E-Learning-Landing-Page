@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>EduVerse — E-Learning Platform</title>
+  <meta name="description" content="EduVerse is a modern e-learning platform offering world-class courses in web development, mobile, data science and more." />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: { inter: ['Inter', 'sans-serif'] },
+          colors: {
+            brand: { 50:'#f0f9ff',100:'#e0f2fe',200:'#bae6fd',300:'#7dd3fc',400:'#38bdf8',500:'#0ea5e9',600:'#0284c7',700:'#0369a1',800:'#075985',900:'#0c4a6e' },
+            accent: { 400:'#a78bfa',500:'#8b5cf6',600:'#7c3aed' }
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    body{font-family:'Inter',sans-serif}
+    .gradient-hero{background:linear-gradient(135deg,#0c4a6e 0%,#0369a1 40%,#7c3aed 100%)}
+    .gradient-cta{background:linear-gradient(135deg,#7c3aed 0%,#0ea5e9 100%)}
+    .card-hover{transition:transform .3s,box-shadow .3s}
+    .card-hover:hover{transform:translateY(-6px);box-shadow:0 20px 40px rgba(0,0,0,.1)}
+    .tab-active{background:#0ea5e9;color:#fff}
+    .faq-answer{max-height:0;overflow:hidden;transition:max-height .4s ease,padding .3s ease}
+    .faq-answer.open{max-height:500px;padding-top:.75rem}
+    .faq-icon{transition:transform .3s}
+    .faq-icon.rotate{transform:rotate(45deg)}
+    @keyframes fadeInUp{from{opacity:0;transform:translateY(30px)}to{opacity:1;transform:translateY(0)}}
+    .animate-fiu{animation:fadeInUp .7s ease both}
+    .delay-1{animation-delay:.1s}.delay-2{animation-delay:.2s}.delay-3{animation-delay:.3s}.delay-4{animation-delay:.4s}
+    @keyframes countUp{from{opacity:0;transform:scale(.8)}to{opacity:1;transform:scale(1)}}
+    .counter-animate{animation:countUp .5s ease both}
+  </style>
+</head>
+<body class="bg-slate-50 text-slate-800">
+
+  <!-- ===== NAVBAR ===== -->
+  <nav class="fixed top-0 inset-x-0 z-50 bg-white/80 backdrop-blur-lg border-b border-slate-100">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 flex items-center justify-between h-16">
+      <a href="#" class="flex items-center gap-2 text-xl font-extrabold text-brand-700">
+        <span class="w-8 h-8 rounded-lg bg-brand-500 text-white flex items-center justify-center text-sm font-black">E</span>
+        EduVerse
+      </a>
+      <div class="hidden md:flex items-center gap-8 text-sm font-medium text-slate-600">
+        <a href="#courses" class="hover:text-brand-600 transition">Courses</a>
+        <a href="#pricing" class="hover:text-brand-600 transition">Pricing</a>
+        <a href="#faq" class="hover:text-brand-600 transition">FAQ</a>
+        <a href="#testimonials" class="hover:text-brand-600 transition">Reviews</a>
+        <a href="#newsletter" class="bg-brand-500 text-white px-5 py-2 rounded-full hover:bg-brand-600 transition font-semibold">Get Started</a>
+      </div>
+      <button id="menuBtn" class="md:hidden flex flex-col gap-1.5 p-2" aria-label="Toggle menu">
+        <span class="block w-6 h-0.5 bg-slate-700 rounded"></span>
+        <span class="block w-6 h-0.5 bg-slate-700 rounded"></span>
+        <span class="block w-4 h-0.5 bg-slate-700 rounded"></span>
+      </button>
+    </div>
+    <!-- Mobile menu -->
+    <div id="mobileMenu" class="hidden md:hidden bg-white border-t border-slate-100 px-6 py-4 space-y-3 text-sm font-medium text-slate-600">
+      <a href="#courses" class="block hover:text-brand-600">Courses</a>
+      <a href="#pricing" class="block hover:text-brand-600">Pricing</a>
+      <a href="#faq" class="block hover:text-brand-600">FAQ</a>
+      <a href="#testimonials" class="block hover:text-brand-600">Reviews</a>
+      <a href="#newsletter" class="block bg-brand-500 text-white text-center px-5 py-2.5 rounded-full font-semibold">Get Started</a>
+    </div>
+  </nav>
+
+  <!-- ===== HERO ===== -->
+  <header class="gradient-hero text-white pt-28 pb-16 sm:pt-36 sm:pb-24">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 text-center">
+      <span class="animate-fiu inline-block bg-white/15 backdrop-blur px-4 py-1.5 rounded-full text-sm font-semibold mb-6 border border-white/20">🎓 Learn. Build. Grow.</span>
+      <h1 class="animate-fiu delay-1 text-3xl sm:text-5xl md:text-6xl font-black mb-4 leading-tight tracking-tight">
+        Master Modern <br class="hidden sm:block"/>Tech Skills
+      </h1>
+      <p class="animate-fiu delay-2 text-brand-200 text-base sm:text-xl max-w-2xl mx-auto mb-8 leading-relaxed">
+        Join 25,000+ students learning Frontend, Backend, Mobile & Data Science with hands-on projects and expert mentorship.
+      </p>
+      <div class="animate-fiu delay-3 flex flex-col sm:flex-row items-center justify-center gap-3 max-w-lg mx-auto">
+        <input type="text" placeholder="What do you want to learn?" class="w-full sm:flex-1 px-5 py-3.5 rounded-full text-slate-800 bg-white shadow-lg focus:outline-none focus:ring-2 focus:ring-brand-400 text-sm" />
+        <button class="w-full sm:w-auto bg-accent-500 hover:bg-accent-600 text-white font-bold px-8 py-3.5 rounded-full shadow-lg transition text-sm">Search</button>
+      </div>
+    </div>
+  </header>
+
+  <!-- ===== STATS ===== -->
+  <section class="-mt-10 relative z-10">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6">
+      <div class="bg-white rounded-2xl shadow-xl border border-slate-100 grid grid-cols-2 sm:grid-cols-4 divide-x divide-slate-100 p-4 sm:p-6">
+        <div class="text-center px-2 py-3">
+          <div class="text-2xl sm:text-3xl font-black text-brand-600" data-target="25000">0</div>
+          <p class="text-xs sm:text-sm text-slate-500 mt-1 font-medium">Students</p>
+        </div>
+        <div class="text-center px-2 py-3">
+          <div class="text-2xl sm:text-3xl font-black text-brand-600" data-target="150">0</div>
+          <p class="text-xs sm:text-sm text-slate-500 mt-1 font-medium">Courses</p>
+        </div>
+        <div class="text-center px-2 py-3">
+          <div class="text-2xl sm:text-3xl font-black text-accent-600" data-target="50">0</div>
+          <p class="text-xs sm:text-sm text-slate-500 mt-1 font-medium">Instructors</p>
+        </div>
+        <div class="text-center px-2 py-3">
+          <div class="text-2xl sm:text-3xl font-black text-accent-600" data-target="98">0</div>
+          <p class="text-xs sm:text-sm text-slate-500 mt-1 font-medium">% Satisfaction</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== COURSES ===== -->
+  <section id="courses" class="max-w-6xl mx-auto px-4 sm:px-6 py-16 sm:py-24">
+    <div class="text-center mb-10">
+      <h2 class="text-2xl sm:text-4xl font-black text-slate-800 mb-3">Explore Our Courses</h2>
+      <p class="text-slate-500 max-w-xl mx-auto">From frontend to data science — find the perfect course for your career goals.</p>
+    </div>
+    <!-- Tabs -->
+    <div class="flex flex-wrap justify-center gap-2 mb-10">
+      <button class="tab-btn tab-active px-5 py-2 rounded-full text-sm font-semibold border border-slate-200 transition" data-cat="all">All</button>
+      <button class="tab-btn px-5 py-2 rounded-full text-sm font-semibold border border-slate-200 text-slate-600 hover:bg-slate-100 transition" data-cat="frontend">Frontend</button>
+      <button class="tab-btn px-5 py-2 rounded-full text-sm font-semibold border border-slate-200 text-slate-600 hover:bg-slate-100 transition" data-cat="backend">Backend</button>
+      <button class="tab-btn px-5 py-2 rounded-full text-sm font-semibold border border-slate-200 text-slate-600 hover:bg-slate-100 transition" data-cat="mobile">Mobile</button>
+      <button class="tab-btn px-5 py-2 rounded-full text-sm font-semibold border border-slate-200 text-slate-600 hover:bg-slate-100 transition" data-cat="data">Data Science</button>
+    </div>
+    <!-- Cards -->
+    <div id="courseGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+    </div>
+  </section>
+
+  <!-- ===== PRICING ===== -->
+  <section id="pricing" class="bg-slate-100 py-16 sm:py-24">
+    <div class="max-w-5xl mx-auto px-4 sm:px-6">
+      <div class="text-center mb-12">
+        <h2 class="text-2xl sm:text-4xl font-black text-slate-800 mb-3">Simple Pricing</h2>
+        <p class="text-slate-500">Choose the plan that fits your learning style.</p>
+      </div>
+      <div class="grid grid-cols-1 sm:grid-cols-3 gap-6">
+        <!-- Free -->
+        <div class="bg-white rounded-2xl p-7 border border-slate-200 shadow-sm card-hover">
+          <h3 class="font-bold text-lg text-slate-800 mb-1">Free</h3>
+          <p class="text-slate-500 text-sm mb-5">Get started with basics</p>
+          <div class="text-4xl font-black text-slate-800 mb-6">$0<span class="text-base font-medium text-slate-400">/mo</span></div>
+          <ul class="space-y-3 text-sm text-slate-600 mb-8">
+            <li class="flex items-center gap-2"><span class="text-green-500">✓</span> 10 Free courses</li>
+            <li class="flex items-center gap-2"><span class="text-green-500">✓</span> Community access</li>
+            <li class="flex items-center gap-2"><span class="text-green-500">✓</span> Basic projects</li>
+            <li class="flex items-center gap-2 text-slate-400"><span>✗</span> Certificates</li>
+            <li class="flex items-center gap-2 text-slate-400"><span>✗</span> 1-on-1 mentorship</li>
+          </ul>
+          <button class="w-full py-3 rounded-full border-2 border-brand-500 text-brand-600 font-bold hover:bg-brand-50 transition text-sm">Start Free</button>
+        </div>
+        <!-- Pro (Featured) -->
+        <div class="bg-brand-600 text-white rounded-2xl p-7 shadow-xl card-hover relative scale-105">
+          <span class="absolute -top-3 left-1/2 -translate-x-1/2 bg-accent-500 text-white text-xs font-bold px-4 py-1 rounded-full">Most Popular</span>
+          <h3 class="font-bold text-lg mb-1">Pro</h3>
+          <p class="text-brand-200 text-sm mb-5">For serious learners</p>
+          <div class="text-4xl font-black mb-6">$19<span class="text-base font-medium text-brand-200">/mo</span></div>
+          <ul class="space-y-3 text-sm mb-8">
+            <li class="flex items-center gap-2"><span class="text-green-300">✓</span> All 150+ courses</li>
+            <li class="flex items-center gap-2"><span class="text-green-300">✓</span> Community + Slack</li>
+            <li class="flex items-center gap-2"><span class="text-green-300">✓</span> Real-world projects</li>
+            <li class="flex items-center gap-2"><span class="text-green-300">✓</span> Certificates</li>
+            <li class="flex items-center gap-2 text-brand-200"><span>✗</span> 1-on-1 mentorship</li>
+          </ul>
+          <button class="w-full py-3 rounded-full bg-white text-brand-700 font-bold hover:bg-brand-50 transition text-sm">Get Pro</button>
+        </div>
+        <!-- Enterprise -->
+        <div class="bg-white rounded-2xl p-7 border border-slate-200 shadow-sm card-hover">
+          <h3 class="font-bold text-lg text-slate-800 mb-1">Enterprise</h3>
+          <p class="text-slate-500 text-sm mb-5">For teams & companies</p>
+          <div class="text-4xl font-black text-slate-800 mb-6">$49<span class="text-base font-medium text-slate-400">/mo</span></div>
+          <ul class="space-y-3 text-sm text-slate-600 mb-8">
+            <li class="flex items-center gap-2"><span class="text-green-500">✓</span> Everything in Pro</li>
+            <li class="flex items-center gap-2"><span class="text-green-500">✓</span> Team dashboard</li>
+            <li class="flex items-center gap-2"><span class="text-green-500">✓</span> Custom learning paths</li>
+            <li class="flex items-center gap-2"><span class="text-green-500">✓</span> Certificates</li>
+            <li class="flex items-center gap-2"><span class="text-green-500">✓</span> 1-on-1 mentorship</li>
+          </ul>
+          <button class="w-full py-3 rounded-full border-2 border-brand-500 text-brand-600 font-bold hover:bg-brand-50 transition text-sm">Contact Us</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== TESTIMONIALS ===== -->
+  <section id="testimonials" class="max-w-5xl mx-auto px-4 sm:px-6 py-16 sm:py-24">
+    <div class="text-center mb-12">
+      <h2 class="text-2xl sm:text-4xl font-black text-slate-800 mb-3">What Our Students Say</h2>
+      <p class="text-slate-500">Hear from learners who transformed their careers.</p>
+    </div>
+    <div class="grid grid-cols-1 sm:grid-cols-3 gap-6">
+      <div class="bg-white rounded-2xl p-6 border border-slate-200 shadow-sm card-hover">
+        <div class="flex items-center gap-3 mb-4">
+          <div class="w-11 h-11 rounded-full bg-brand-100 flex items-center justify-center text-lg font-bold text-brand-700">S</div>
+          <div><p class="font-bold text-slate-800">Sarah K.</p><p class="text-xs text-slate-400">Frontend Developer</p></div>
+        </div>
+        <p class="text-slate-600 text-sm leading-relaxed">"EduVerse's project-based approach helped me land my first dev job within 3 months. The courses are incredibly practical!"</p>
+        <div class="mt-4 text-yellow-400 text-sm">★★★★★</div>
+      </div>
+      <div class="bg-white rounded-2xl p-6 border border-slate-200 shadow-sm card-hover">
+        <div class="flex items-center gap-3 mb-4">
+          <div class="w-11 h-11 rounded-full bg-accent-100 flex items-center justify-center text-lg font-bold text-accent-700">A</div>
+          <div><p class="font-bold text-slate-800">Ahmed R.</p><p class="text-xs text-slate-400">Full Stack Engineer</p></div>
+        </div>
+        <p class="text-slate-600 text-sm leading-relaxed">"The .NET and Angular tracks are top-notch. I went from beginner to building production apps in 6 months."</p>
+        <div class="mt-4 text-yellow-400 text-sm">★★★★★</div>
+      </div>
+      <div class="bg-white rounded-2xl p-6 border border-slate-200 shadow-sm card-hover">
+        <div class="flex items-center gap-3 mb-4">
+          <div class="w-11 h-11 rounded-full bg-green-100 flex items-center justify-center text-lg font-bold text-green-700">L</div>
+          <div><p class="font-bold text-slate-800">Lina M.</p><p class="text-xs text-slate-400">Data Scientist</p></div>
+        </div>
+        <p class="text-slate-600 text-sm leading-relaxed">"Best data science curriculum I've found. The hands-on projects with real datasets made all the difference."</p>
+        <div class="mt-4 text-yellow-400 text-sm">★★★★★</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== FAQ ===== -->
+  <section id="faq" class="bg-slate-100 py-16 sm:py-24">
+    <div class="max-w-3xl mx-auto px-4 sm:px-6">
+      <div class="text-center mb-12">
+        <h2 class="text-2xl sm:text-4xl font-black text-slate-800 mb-3">Frequently Asked Questions</h2>
+        <p class="text-slate-500">Everything you need to know about EduVerse.</p>
+      </div>
+      <div class="space-y-3">
+        <div class="faq-item bg-white rounded-xl border border-slate-200 shadow-sm">
+          <button class="faq-btn w-full flex items-center justify-between p-5 text-left">
+            <span class="font-bold text-slate-800 text-sm sm:text-base">Are the courses self-paced?</span>
+            <span class="faq-icon text-brand-500 text-2xl font-light leading-none">+</span>
+          </button>
+          <div class="faq-answer px-5 pb-5 text-sm text-slate-600 leading-relaxed">Yes! All courses are 100% self-paced. You can learn on your own schedule, pause and resume anytime. There are no fixed deadlines.</div>
+        </div>
+        <div class="faq-item bg-white rounded-xl border border-slate-200 shadow-sm">
+          <button class="faq-btn w-full flex items-center justify-between p-5 text-left">
+            <span class="font-bold text-slate-800 text-sm sm:text-base">Do I get a certificate?</span>
+            <span class="faq-icon text-brand-500 text-2xl font-light leading-none">+</span>
+          </button>
+          <div class="faq-answer px-5 pb-5 text-sm text-slate-600 leading-relaxed">Pro and Enterprise plans include verified certificates upon course completion that you can share on LinkedIn and your resume.</div>
+        </div>
+        <div class="faq-item bg-white rounded-xl border border-slate-200 shadow-sm">
+          <button class="faq-btn w-full flex items-center justify-between p-5 text-left">
+            <span class="font-bold text-slate-800 text-sm sm:text-base">What if I need help during a course?</span>
+            <span class="faq-icon text-brand-500 text-2xl font-light leading-none">+</span>
+          </button>
+          <div class="faq-answer px-5 pb-5 text-sm text-slate-600 leading-relaxed">Our community forum and Slack channels are available 24/7. Enterprise members also get dedicated 1-on-1 mentorship sessions.</div>
+        </div>
+        <div class="faq-item bg-white rounded-xl border border-slate-200 shadow-sm">
+          <button class="faq-btn w-full flex items-center justify-between p-5 text-left">
+            <span class="font-bold text-slate-800 text-sm sm:text-base">Can I cancel my subscription?</span>
+            <span class="faq-icon text-brand-500 text-2xl font-light leading-none">+</span>
+          </button>
+          <div class="faq-answer px-5 pb-5 text-sm text-slate-600 leading-relaxed">Absolutely. You can cancel anytime from your account settings. No hidden fees, no questions asked. We also offer a 14-day money-back guarantee.</div>
+        </div>
+        <div class="faq-item bg-white rounded-xl border border-slate-200 shadow-sm">
+          <button class="faq-btn w-full flex items-center justify-between p-5 text-left">
+            <span class="font-bold text-slate-800 text-sm sm:text-base">Do I need prior coding experience?</span>
+            <span class="faq-icon text-brand-500 text-2xl font-light leading-none">+</span>
+          </button>
+          <div class="faq-answer px-5 pb-5 text-sm text-slate-600 leading-relaxed">Not at all! We have beginner-friendly courses that start from absolute zero. Each track clearly indicates the required skill level.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== NEWSLETTER ===== -->
+  <section id="newsletter" class="gradient-cta text-white py-16 sm:py-20">
+    <div class="max-w-2xl mx-auto px-4 sm:px-6 text-center">
+      <h2 class="text-2xl sm:text-3xl font-black mb-3">Stay Updated</h2>
+      <p class="text-white/80 mb-8 text-sm sm:text-base">Get weekly tips, new course alerts, and exclusive discounts straight to your inbox.</p>
+      <form class="flex flex-col sm:flex-row gap-3 max-w-md mx-auto" onsubmit="event.preventDefault(); alert('Thanks for subscribing! 🎉');">
+        <input type="email" required placeholder="Your email address" class="flex-1 px-5 py-3.5 rounded-full text-slate-800 bg-white shadow-lg focus:outline-none focus:ring-2 focus:ring-white/50 text-sm" />
+        <button type="submit" class="bg-white text-accent-600 font-bold px-8 py-3.5 rounded-full hover:bg-accent-50 transition text-sm shadow-lg">Subscribe</button>
+      </form>
+    </div>
+  </section>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="bg-slate-900 text-slate-400 py-10">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6">
+      <div class="flex flex-col sm:flex-row items-center justify-between gap-4">
+        <div class="flex items-center gap-2 text-lg font-extrabold text-white">
+          <span class="w-7 h-7 rounded-lg bg-brand-500 text-white flex items-center justify-center text-xs font-black">E</span>
+          EduVerse
+        </div>
+        <div class="flex gap-6 text-sm">
+          <a href="#courses" class="hover:text-white transition">Courses</a>
+          <a href="#pricing" class="hover:text-white transition">Pricing</a>
+          <a href="#faq" class="hover:text-white transition">FAQ</a>
+          <a href="#testimonials" class="hover:text-white transition">Reviews</a>
+        </div>
+      </div>
+      <div class="border-t border-slate-800 mt-6 pt-6 text-center text-xs text-slate-500">
+        © 2026 EduVerse. Built by <a href="https://mahmoudmagdyedu.github.io/My-Portfolio/" class="text-brand-400 hover:underline">Mahmoud Magdy</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // ===== Mobile Menu Toggle =====
+    const menuBtn = document.getElementById('menuBtn');
+    const mobileMenu = document.getElementById('mobileMenu');
+    menuBtn.addEventListener('click', () => mobileMenu.classList.toggle('hidden'));
+    mobileMenu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => mobileMenu.classList.add('hidden')));
+
+    // ===== Animated Counters =====
+    function animateCounters() {
+      document.querySelectorAll('[data-target]').forEach(el => {
+        const target = +el.dataset.target;
+        const duration = 2000;
+        const step = target / (duration / 16);
+        let current = 0;
+        const timer = setInterval(() => {
+          current += step;
+          if (current >= target) { current = target; clearInterval(timer); }
+          el.textContent = Math.floor(current).toLocaleString() + (target === 98 ? '%' : target >= 1000 ? '+' : '+');
+        }, 16);
+      });
+    }
+    const statsObserver = new IntersectionObserver((entries) => {
+      entries.forEach(e => { if (e.isIntersecting) { animateCounters(); statsObserver.disconnect(); } });
+    }, { threshold: 0.5 });
+    const statsSection = document.querySelector('[data-target]');
+    if (statsSection) statsObserver.observe(statsSection.closest('section'));
+
+    // ===== Course Data & Filtering =====
+    const courses = [
+      { title:'HTML & CSS Masterclass', cat:'frontend', level:'Beginner', lessons:42, img:'https://images.unsplash.com/photo-1621839673705-6617adf9e890?w=400&q=80', price:'Free' },
+      { title:'Tailwind CSS Pro', cat:'frontend', level:'Intermediate', lessons:35, img:'https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=400&q=80', price:'$12' },
+      { title:'JavaScript Deep Dive', cat:'frontend', level:'Intermediate', lessons:68, img:'https://images.unsplash.com/photo-1579468118864-1b9ea3c0db4a?w=400&q=80', price:'$15' },
+      { title:'Angular Complete Guide', cat:'frontend', level:'Advanced', lessons:95, img:'https://images.unsplash.com/photo-1633356122544-f134324a6cee?w=400&q=80', price:'$19' },
+      { title:'.NET Web API', cat:'backend', level:'Intermediate', lessons:52, img:'https://images.unsplash.com/photo-1516116216624-53e697fedbea?w=400&q=80', price:'$15' },
+      { title:'SQL & EF Core', cat:'backend', level:'Intermediate', lessons:40, img:'https://images.unsplash.com/photo-1544383835-bda2bc66a55d?w=400&q=80', price:'$12' },
+      { title:'Flutter Mobile Apps', cat:'mobile', level:'Beginner', lessons:60, img:'https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?w=400&q=80', price:'$15' },
+      { title:'React Native', cat:'mobile', level:'Intermediate', lessons:55, img:'https://images.unsplash.com/photo-1551650975-87deedd944c3?w=400&q=80', price:'$15' },
+      { title:'Python for Data Science', cat:'data', level:'Beginner', lessons:75, img:'https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=400&q=80', price:'$19' },
+    ];
+
+    const grid = document.getElementById('courseGrid');
+    function renderCourses(cat) {
+      const filtered = cat === 'all' ? courses : courses.filter(c => c.cat === cat);
+      grid.innerHTML = filtered.map(c => `
+        <div class="card-hover bg-white rounded-2xl overflow-hidden border border-slate-200 shadow-sm">
+          <div class="h-44 overflow-hidden"><img src="${c.img}" alt="${c.title}" class="w-full h-full object-cover hover:scale-105 transition-transform duration-500" /></div>
+          <div class="p-5">
+            <div class="flex items-center justify-between mb-2">
+              <span class="text-[11px] font-semibold px-2.5 py-1 rounded-full ${c.level==='Beginner'?'bg-green-100 text-green-700':c.level==='Intermediate'?'bg-blue-100 text-blue-700':'bg-purple-100 text-purple-700'}">${c.level}</span>
+              <span class="text-xs text-slate-400">${c.lessons} lessons</span>
+            </div>
+            <h3 class="font-bold text-slate-800 mb-3">${c.title}</h3>
+            <div class="flex items-center justify-between">
+              <span class="font-black text-brand-600">${c.price}</span>
+              <button class="text-xs font-semibold text-brand-500 hover:text-brand-700 transition">Enroll →</button>
+            </div>
+          </div>
+        </div>
+      `).join('');
+    }
+    renderCourses('all');
+
+    document.querySelectorAll('.tab-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        document.querySelectorAll('.tab-btn').forEach(b => { b.classList.remove('tab-active'); b.classList.add('text-slate-600'); });
+        btn.classList.add('tab-active'); btn.classList.remove('text-slate-600');
+        renderCourses(btn.dataset.cat);
+      });
+    });
+
+    // ===== FAQ Accordion =====
+    document.querySelectorAll('.faq-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const answer = btn.nextElementSibling;
+        const icon = btn.querySelector('.faq-icon');
+        const isOpen = answer.classList.contains('open');
+        // Close all
+        document.querySelectorAll('.faq-answer').forEach(a => a.classList.remove('open'));
+        document.querySelectorAll('.faq-icon').forEach(i => i.classList.remove('rotate'));
+        // Toggle current
+        if (!isOpen) { answer.classList.add('open'); icon.classList.add('rotate'); }
+      });
+    });
+
+    // ===== Smooth scroll =====
+    document.querySelectorAll('a[href^="#"]').forEach(a => {
+      a.addEventListener('click', e => {
+        e.preventDefault();
+        const target = document.querySelector(a.getAttribute('href'));
+        if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      });
+    });
+  </script>
+</body>
+</html>
